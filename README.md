@@ -19,20 +19,20 @@ We hope to predict the popularity of a song based on components through data vis
 * [Week 9] (#weeknine)
 
 ## Data Sources:
-	Spotify API
+   Spotify API
 
 ## Components Considered
- 	+ Genre
- 	+ Danceabilty
- 	+ Energy
- 	+ Key
- 	+ Loudness
- 	+ Speechiness
- 	+ Acousticness
- 	+ Instrumentalness
- 	+ Liveness
- 	+ Valence
- 	+ Tempo
+   + Genre
+   + Danceabilty
+   + Energy
+   + Key
+   + Loudness
+   + Speechiness
+   + Acousticness
+   + Instrumentalness
+   + Liveness
+   + Valence
+   + Tempo
 
  ## Language(s)
  	R
@@ -42,18 +42,18 @@ We hope to predict the popularity of a song based on components through data vis
 ## <a name='weekthree'></a>Week 3:
   + Initial project design
   + Gather data (Data pre-cleaned: )
-  ## <a name='weekfour'></a>Week 4:
+## <a name='weekfour'></a>Week 4:
   + Use R to analyze
-  ## <a name='weekfive'></a>Week 5:
-  + Use R to analyze
-  ## <a name='weeksix'></a>Week 6:
-  + Use ggplot2 to visualize
-  ## <a name='weekseven'></a>Week 7:
-  + Use ggplot2 to visualize
-  ## <a name='weekeight'></a>Week 8:
-  + Use shiny dashboard
-  ## <a name='weeknine'></a>Week 9:
-  + FInish and clean project
+## <a name='weekfive'></a>Week 5:
+ + Use R to analyze
+## <a name='weeksix'></a>Week 6:
+ + Use ggplot2 to visualize
+## <a name='weekseven'></a>Week 7:
+ + Use ggplot2 to visualize
+## <a name='weekeight'></a>Week 8:
+ + Use shiny dashboard
+## <a name='weeknine'></a>Week 9:
+ + FInish and clean project
 
   ## Desired Outcome
 
