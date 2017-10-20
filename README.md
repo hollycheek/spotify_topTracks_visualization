@@ -53,6 +53,7 @@ We hope to predict the popularity of a song based on components through data vis
 ## <a name='weekeight'></a>Week 8:
  + Use shiny dashboard
 ## <a name='weeknine'></a>Week 9:
+
  + Finish and clean project
 
   ## Desired Outcome
