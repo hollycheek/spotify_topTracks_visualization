@@ -17,6 +17,9 @@ We hope to predict the popularity of a song based on components through data vis
 * [Week 7] (#weekseven)
 * [Week 8] (#weekeight)
 * [Week 9] (#weeknine)
+[Foo](#foo)
+
+# Foo 
 
 ## Data Sources:
    Spotify API
