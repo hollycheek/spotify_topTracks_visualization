@@ -1,7 +1,6 @@
 # spotify_topTracks_visualization
 
-![Image of Spotify Top Trakcs]
-(https://github.com/hollycheek/spotify_topTracks_visualization/blob/master/spottop50.jpeg)
+![Image of Spotify Top Trakcs](https://github.com/hollycheek/spotify_topTracks_visualization/blob/master/spottop50.jpeg?raw=true)
 
 ### Contributors: Ananya Haravu, Holly Cheek, Ryan Gan
 
