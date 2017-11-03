@@ -21,18 +21,18 @@ library(plotly)
 #Loads data into data frame
 spotify_dt <- data.frame(spotifyDataset)
 spotify_dt_old <- data.frame(spotifyDatasetOld)
+spotify_new_subset <- subset(spotify_dt, select = -c(X, song_title, artist_name))
 
 #Merge to new dataset
-#?merge
 spotify_dt_new <- merge.data.frame(spotify_dt_old, spotify_dt, by.x = 'songid', by.y = 'songid')
 View(spotify_dt_new)
 
-#Save to CSV
-write.csv(spotify_dt_new, 'spotifyMerge.csv')
-read.csv()
+#View cleaned data
+spotifyDatasetCleaned <- read.csv(file='spotifyData.csv', header = TRUE, sep = ',')
+View(spotifyDatasetCleaned)
 
 #Visualization of danceability vs. popularity by category 
-ggplot(data = spotify_dt, 
+ggplot(data = spotifyDatasetCleaned, 
        aes(x = danceability, 
            y = popularity,
            col = category)) +
@@ -43,10 +43,20 @@ ggplot(data = spotify_dt,
   theme_minimal() + 
   facet_wrap(~category)
 
+#Visualization of energy vs. popularity by category 
+ggplot(data = spotifyDatasetCleaned, 
+       aes(x = energy, 
+           y = popularity,
+           col = category)) +
+  geom_point() + 
+  geom_smooth(method = 'lm')
+  ggtitle('Scatter Plot: Energy Vs. Popularity') +
+  labs(x = 'Energy', 
+       y = 'Popularity') + 
+  theme_minimal() + 
+  facet_wrap(~category)
+
 #???
 spotify_dt %>% 
   filter(category == 'Pop') %>%
   select(danceability)
-
-
-
