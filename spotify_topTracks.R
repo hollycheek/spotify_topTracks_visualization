@@ -22,11 +22,14 @@ library(plotly)
 spotify_dt <- data.frame(spotifyDataset)
 spotify_dt_old <- data.frame(spotifyDatasetOld)
 
-
 #Merge to new dataset
 #?merge
 spotify_dt_new <- merge.data.frame(spotify_dt_old, spotify_dt, by.x = 'songid', by.y = 'songid')
 View(spotify_dt_new)
+
+#Save to CSV
+write.csv(spotify_dt_new, 'spotifyMerge.csv')
+read.csv()
 
 #Visualization of danceability vs. popularity by category 
 ggplot(data = spotify_dt, 
