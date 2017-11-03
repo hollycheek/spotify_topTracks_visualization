@@ -6,7 +6,7 @@ spotifyDatasetOld <- read.csv(file='song-data-unique.csv', header = TRUE, sep = 
 View(spotifyDataset)
 View(spotifyDatasetOld)
 
-#delete time signature column because did not seem useful for analysis
+#Delete time signature column because did not seem useful for analysis
 spotifyDataset$time_signature=NULL
 spotifyDatasetOld$time_signature=NULL
 
@@ -37,6 +37,7 @@ ggplot(data = spotifyDatasetCleaned,
            y = popularity,
            col = category)) +
   geom_point() + 
+  geom_smooth(method = 'lm') +
   ggtitle('Scatter Plot: Danceability Vs. Popularity') +
   labs(x = 'Danceability', 
        y = 'Popularity') + 
@@ -49,12 +50,77 @@ ggplot(data = spotifyDatasetCleaned,
            y = popularity,
            col = category)) +
   geom_point() + 
-  geom_smooth(method = 'lm')
+  #Add geom_smooth to see trends
+  geom_smooth(method = 'lm') +
   ggtitle('Scatter Plot: Energy Vs. Popularity') +
   labs(x = 'Energy', 
        y = 'Popularity') + 
   theme_minimal() + 
   facet_wrap(~category)
+
+#Visualization of key vs. popularity by category 
+ggplot(data = spotifyDatasetCleaned, 
+       aes(x = key, 
+           y = popularity,
+           col = category)) +
+  geom_point() + 
+  geom_smooth(method = 'lm') +
+  ggtitle('Scatter Plot: Key Vs. Popularity') +
+  labs(x = 'Key', 
+       y = 'Popularity') + 
+  theme_minimal() + 
+  facet_wrap(~category)
+
+#Visualization of loudness vs. popularity by category 
+ggplot(data = spotifyDatasetCleaned, 
+       aes(x = loudness, 
+           y = popularity,
+           col = category)) +
+  geom_point() + 
+  geom_smooth(method = 'lm') +
+  ggtitle('Scatter Plot: Loudness Vs. Popularity') +
+  labs(x = 'Loudness', 
+       y = 'Popularity') + 
+  theme_minimal() + 
+  facet_wrap(~category)
+
+#Visualization of energy vs. danceablility by category 
+ggplot(data = spotifyDatasetCleaned, 
+       aes(x = energy, 
+           y = danceability,
+           col = category)) +
+  geom_point() + 
+  geom_smooth(method = 'lm') +
+  ggtitle('Scatter Plot: Energy Vs. Danceability') +
+  labs(x = 'Energy', 
+       y = 'Danceability') + 
+  theme_minimal() + 
+  facet_wrap(~category)
+
+#Visualization of valence vs. popularity by category 
+ggplot(data = spotifyDatasetCleaned, 
+       aes(x = valence, 
+           y = popularity,
+           col = category)) +
+  geom_point() + 
+  geom_smooth(method = 'lm') +
+  ggtitle('Scatter Plot: Valence Vs. Popularity') +
+  labs(x = 'Valence', 
+       y = 'Popularity') + 
+  theme_minimal() + 
+  facet_wrap(~category)
+
+#Visualization of category vs. popularity by category 
+ggplot(data = spotifyDatasetCleaned, 
+       aes(x = category, 
+           y = popularity,
+           col = category)) +
+  geom_point() + 
+  geom_smooth(method = 'lm') +
+  ggtitle('Scatter Plot: Category Vs. Popularity') +
+  labs(x = 'Category', 
+       y = 'Popularity') + 
+  theme_minimal()
 
 #???
 spotify_dt %>% 
