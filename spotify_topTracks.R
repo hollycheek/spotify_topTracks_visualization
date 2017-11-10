@@ -1,39 +1,45 @@
 getwd() #get current directory
 setwd('/Users/Ananya/myProjects/spotify_topTracks_visualization')
 
+#install packages ggplot2, plotly, dplyr
+install.packages('ggplot2')
+install.packages('plotly')
+install.packages('dplyr')
+library('ggplot2')
+library('plotly')
+library('dplyr')
+
 #Read csv file and create dataset
-spotifyDataset <- read.csv(file='song_data_cleaned.csv', header = TRUE, sep = ',')
 spotifyDatasetOld <- read.csv(file='originalData.csv', header = TRUE, sep = ',')
-View(spotifyDataset)
+manualCleaned <- read.csv(file='dataManualClean.csv', header = TRUE, sep = ',')
+fourGenreData <- read.csv(file='fourGenreData.csv', header = TRUE, sep=',')
 View(spotifyDatasetOld)
+View(manualCleaned)
+View(fourGenreData)
+
+#make subsets of spotifyDatasetOld(removing rows) and fourGenreData(removing columns)
+#copy Original Data
+copyDataOld <- spotifyDatasetOld
+View(copyDataOld)
+#remove rows with category =Pop,EDM,Rock, Hip Hop
+copyDataOld <- slice(copyDataOld,3509:8763) #the remaining genre begin at row 3509
+View(copyDataOld)
+#Made copy by removing three columns not present in spotifyDatasetOld
+copyfourGenreData <- subset(fourGenreData, select = -c(X, song_title, artist_name))
+View(copyfourGenreData)
+
+#combined copyDataOld AND copyfourGenreData
+completeData <- rbind(copyfourGenreData,copyDataOld)
+View(completeData)
+
+#write combined completeData to a CSV file
+write.csv(completeData, 'cleanedData.csv', row.names=FALSE)
 
 #Delete time signature column because did not seem useful for analysis
-spotifyDataset$time_signature=NULL
-spotifyDatasetOld$time_signature=NULL
-
-#install.packages('ggplot2')
-#install.packages('plotly')
-#install.packages('ISLR')
-#library(ISLR)
-library(tidyverse)
-library(ggplot2)
-library(plotly)
-
-#Loads data into data frame
-spotify_dt <- data.frame(spotifyDataset)
-spotify_dt_old <- data.frame(spotifyDatasetOld)
-spotify_new_subset <- subset(spotify_dt, select = -c(X, song_title, artist_name))
-
-#Merge to new dataset
-spotify_dt_new <- merge.data.frame(spotify_dt_old, spotify_dt, by.x = 'songid', by.y = 'songid')
-View(spotify_dt_new)
-
-#View cleaned data
-spotifyDatasetCleaned <- read.csv(file='spotifyData.csv', header = TRUE, sep = ',')
-View(spotifyDatasetCleaned)
+completeData$time_signature=NULL
 
 #Visualization of danceability vs. popularity by category 
-ggplot(data = spotifyDatasetCleaned, 
+ggplot(data = completeData, 
        aes(x = danceability, 
            y = popularity,
            col = category)) +
@@ -46,7 +52,7 @@ ggplot(data = spotifyDatasetCleaned,
   facet_wrap(~category)
 
 #Visualization of energy vs. popularity by category 
-ggplot(data = spotifyDatasetCleaned, 
+ggplot(data = completeData, 
        aes(x = energy, 
            y = popularity,
            col = category)) +
@@ -60,7 +66,7 @@ ggplot(data = spotifyDatasetCleaned,
   facet_wrap(~category)
 
 #Visualization of key vs. popularity by category 
-ggplot(data = spotifyDatasetCleaned, 
+ggplot(data = completeData, 
        aes(x = key, 
            y = popularity,
            col = category)) +
@@ -73,7 +79,7 @@ ggplot(data = spotifyDatasetCleaned,
   facet_wrap(~category)
 
 #Visualization of loudness vs. popularity by category 
-ggplot(data = spotifyDatasetCleaned, 
+ggplot(data = completeData, 
        aes(x = loudness, 
            y = popularity,
            col = category)) +
@@ -86,7 +92,7 @@ ggplot(data = spotifyDatasetCleaned,
   facet_wrap(~category)
 
 #Visualization of energy vs. danceablility by category 
-ggplot(data = spotifyDatasetCleaned, 
+ggplot(data = completeData, 
        aes(x = energy, 
            y = danceability,
            col = category)) +
@@ -99,7 +105,7 @@ ggplot(data = spotifyDatasetCleaned,
   facet_wrap(~category)
 
 #Visualization of valence vs. popularity by category 
-ggplot(data = spotifyDatasetCleaned, 
+ggplot(data = completeData, 
        aes(x = valence, 
            y = popularity,
            col = category)) +
@@ -112,7 +118,7 @@ ggplot(data = spotifyDatasetCleaned,
   facet_wrap(~category)
 
 #Visualization of category vs. popularity by category 
-ggplot(data = spotifyDatasetCleaned, 
+ggplot(data = completeData, 
        aes(x = category, 
            y = popularity,
            col = category)) +
