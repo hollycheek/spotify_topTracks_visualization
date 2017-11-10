@@ -1,8 +1,9 @@
+getwd() #get current directory
 setwd('/Users/Ananya/myProjects/spotify_topTracks_visualization')
 
 #Read csv file and create dataset
 spotifyDataset <- read.csv(file='song_data_cleaned.csv', header = TRUE, sep = ',')
-spotifyDatasetOld <- read.csv(file='song-data-unique.csv', header = TRUE, sep = ',')
+spotifyDatasetOld <- read.csv(file='originalData.csv', header = TRUE, sep = ',')
 View(spotifyDataset)
 View(spotifyDatasetOld)
 
