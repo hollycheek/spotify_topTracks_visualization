@@ -12,7 +12,7 @@ library('dplyr')
 #Read csv file and create dataset
 spotifyDatasetOld <- read.csv(file='originalData.csv', header = TRUE, sep = ',')
 manualCleaned <- read.csv(file='dataManualClean.csv', header = TRUE, sep = ',')
-fourGenreData <- read.csv(file='fourGenreData.csv', header = TRUE, sep=',')
+fourGenreData <- read.csv(file='fourGenreData.csv', header = TRUE, sep= ',')
 View(spotifyDatasetOld)
 View(manualCleaned)
 View(fourGenreData)
