@@ -1,6 +1,9 @@
 getwd() #get current directory
 setwd('/Users/Ananya/myProjects/spotify_topTracks_visualization')
 
+#What makes a song a romance song?
+#ggpairs ggplot2
+
 #install packages ggplot2, plotly, dplyr
 install.packages('ggplot2')
 install.packages('plotly')
@@ -48,8 +51,8 @@ ggplot(data = completeData,
   ggtitle('Scatter Plot: Danceability Vs. Popularity') +
   labs(x = 'Danceability', 
        y = 'Popularity') + 
-  theme_minimal() + 
-  facet_wrap(~category)
+  theme_minimal() #+ 
+ # facet_wrap(~category)
 
 #Visualization of energy vs. popularity by category 
 ggplot(data = completeData, 
@@ -123,6 +126,8 @@ ggplot(data = completeData,
            y = popularity,
            col = category)) +
   geom_point() + 
+  #LOOK AT SPREAD
+  geom_jitter() +
   geom_smooth(method = 'lm') +
   ggtitle('Scatter Plot: Category Vs. Popularity') +
   labs(x = 'Category', 
